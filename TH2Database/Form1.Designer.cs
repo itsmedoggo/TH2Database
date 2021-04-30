@@ -351,6 +351,9 @@ namespace TH2Database
             this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.affixesTab = new System.Windows.Forms.TabPage();
             this.rareAffixesTab = new System.Windows.Forms.TabPage();
+            this.label106 = new System.Windows.Forms.Label();
+            this.uniqueBossesClassBox = new System.Windows.Forms.ComboBox();
+            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabs.SuspendLayout();
             this.monstersTab.SuspendLayout();
             this.bossesTab.SuspendLayout();
@@ -3046,10 +3049,10 @@ namespace TH2Database
             this.itemsTab.Controls.Add(this.itemName);
             this.itemsTab.Controls.Add(this.label69);
             this.itemsTab.Controls.Add(this.itemList);
-            this.itemsTab.Location = new System.Drawing.Point(4, 22);
+            this.itemsTab.Location = new System.Drawing.Point(4, 25);
             this.itemsTab.Name = "itemsTab";
             this.itemsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.itemsTab.Size = new System.Drawing.Size(1577, 835);
+            this.itemsTab.Size = new System.Drawing.Size(1577, 832);
             this.itemsTab.TabIndex = 2;
             this.itemsTab.Text = "Base Items";
             this.itemsTab.UseVisualStyleBackColor = true;
@@ -3366,7 +3369,7 @@ namespace TH2Database
             this.label73.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label73.AutoSize = true;
             this.label73.Font = new System.Drawing.Font("Courier New", 12F);
-            this.label73.Location = new System.Drawing.Point(493, 143);
+            this.label73.Location = new System.Drawing.Point(493, 144);
             this.label73.Name = "label73";
             this.label73.Size = new System.Drawing.Size(68, 18);
             this.label73.TabIndex = 227;
@@ -3377,7 +3380,7 @@ namespace TH2Database
             // 
             this.itemDurabilityLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.itemDurabilityLabel.Font = new System.Drawing.Font("Courier New", 12F);
-            this.itemDurabilityLabel.Location = new System.Drawing.Point(433, 161);
+            this.itemDurabilityLabel.Location = new System.Drawing.Point(433, 162);
             this.itemDurabilityLabel.Name = "itemDurabilityLabel";
             this.itemDurabilityLabel.Size = new System.Drawing.Size(128, 18);
             this.itemDurabilityLabel.TabIndex = 227;
@@ -3618,6 +3621,7 @@ namespace TH2Database
             // 
             // uniquesTab
             // 
+            this.uniquesTab.Controls.Add(this.uniqueBossesClassBox);
             this.uniquesTab.Controls.Add(this.uniqueBossesList);
             this.uniquesTab.Controls.Add(this.uniquePrice);
             this.uniquesTab.Controls.Add(this.uniqueAdditionalEffects);
@@ -3625,6 +3629,7 @@ namespace TH2Database
             this.uniquesTab.Controls.Add(this.uniqueSet);
             this.uniquesTab.Controls.Add(this.uniqueLevel);
             this.uniquesTab.Controls.Add(this.label169);
+            this.uniquesTab.Controls.Add(this.label106);
             this.uniquesTab.Controls.Add(this.label178);
             this.uniquesTab.Controls.Add(this.label182);
             this.uniquesTab.Controls.Add(this.label189);
@@ -3647,12 +3652,13 @@ namespace TH2Database
             this.uniqueBossesList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader5,
             this.columnHeader6,
-            this.columnHeader8});
+            this.columnHeader8,
+            this.columnHeader16});
             this.uniqueBossesList.HideSelection = false;
-            this.uniqueBossesList.Location = new System.Drawing.Point(1035, 203);
+            this.uniqueBossesList.Location = new System.Drawing.Point(985, 203);
             this.uniqueBossesList.MultiSelect = false;
             this.uniqueBossesList.Name = "uniqueBossesList";
-            this.uniqueBossesList.Size = new System.Drawing.Size(536, 623);
+            this.uniqueBossesList.Size = new System.Drawing.Size(586, 623);
             this.uniqueBossesList.TabIndex = 281;
             this.uniqueBossesList.UseCompatibleStateImageBehavior = false;
             this.uniqueBossesList.View = System.Windows.Forms.View.Details;
@@ -3698,7 +3704,7 @@ namespace TH2Database
             // 
             this.uniqueBaseItem.AutoSize = true;
             this.uniqueBaseItem.Font = new System.Drawing.Font("Courier New", 12F);
-            this.uniqueBaseItem.Location = new System.Drawing.Point(916, 50);
+            this.uniqueBaseItem.Location = new System.Drawing.Point(562, 50);
             this.uniqueBaseItem.Name = "uniqueBaseItem";
             this.uniqueBaseItem.Size = new System.Drawing.Size(18, 18);
             this.uniqueBaseItem.TabIndex = 280;
@@ -3718,7 +3724,7 @@ namespace TH2Database
             // 
             this.uniqueLevel.AutoSize = true;
             this.uniqueLevel.Font = new System.Drawing.Font("Courier New", 12F);
-            this.uniqueLevel.Location = new System.Drawing.Point(562, 109);
+            this.uniqueLevel.Location = new System.Drawing.Point(561, 109);
             this.uniqueLevel.Name = "uniqueLevel";
             this.uniqueLevel.Size = new System.Drawing.Size(18, 18);
             this.uniqueLevel.TabIndex = 255;
@@ -3729,7 +3735,7 @@ namespace TH2Database
             this.label169.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label169.AutoSize = true;
             this.label169.Font = new System.Drawing.Font("Courier New", 12F);
-            this.label169.Location = new System.Drawing.Point(493, 125);
+            this.label169.Location = new System.Drawing.Point(493, 127);
             this.label169.Name = "label169";
             this.label169.Size = new System.Drawing.Size(68, 18);
             this.label169.TabIndex = 236;
@@ -3739,7 +3745,7 @@ namespace TH2Database
             // label178
             // 
             this.label178.Font = new System.Drawing.Font("Courier New", 12F);
-            this.label178.Location = new System.Drawing.Point(1035, 177);
+            this.label178.Location = new System.Drawing.Point(982, 177);
             this.label178.Name = "label178";
             this.label178.Size = new System.Drawing.Size(195, 18);
             this.label178.TabIndex = 242;
@@ -3760,11 +3766,11 @@ namespace TH2Database
             // 
             this.label189.AutoSize = true;
             this.label189.Font = new System.Drawing.Font("Courier New", 12F);
-            this.label189.Location = new System.Drawing.Point(804, 50);
+            this.label189.Location = new System.Drawing.Point(423, 50);
             this.label189.Name = "label189";
-            this.label189.Size = new System.Drawing.Size(108, 18);
+            this.label189.Size = new System.Drawing.Size(138, 18);
             this.label189.TabIndex = 248;
-            this.label189.Text = "Base Item:";
+            this.label189.Text = "Base Item(s):";
             this.label189.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label102
@@ -3845,10 +3851,10 @@ namespace TH2Database
             this.setsTab.Controls.Add(this.setName);
             this.setsTab.Controls.Add(this.label107);
             this.setsTab.Controls.Add(this.setList);
-            this.setsTab.Location = new System.Drawing.Point(4, 25);
+            this.setsTab.Location = new System.Drawing.Point(4, 22);
             this.setsTab.Name = "setsTab";
             this.setsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.setsTab.Size = new System.Drawing.Size(1577, 832);
+            this.setsTab.Size = new System.Drawing.Size(1577, 835);
             this.setsTab.TabIndex = 4;
             this.setsTab.Text = "Sets";
             this.setsTab.UseVisualStyleBackColor = true;
@@ -3959,10 +3965,10 @@ namespace TH2Database
             // 
             // affixesTab
             // 
-            this.affixesTab.Location = new System.Drawing.Point(4, 25);
+            this.affixesTab.Location = new System.Drawing.Point(4, 22);
             this.affixesTab.Name = "affixesTab";
             this.affixesTab.Padding = new System.Windows.Forms.Padding(3);
-            this.affixesTab.Size = new System.Drawing.Size(1577, 832);
+            this.affixesTab.Size = new System.Drawing.Size(1577, 835);
             this.affixesTab.TabIndex = 5;
             this.affixesTab.Text = "Affixes";
             this.affixesTab.UseVisualStyleBackColor = true;
@@ -3977,6 +3983,31 @@ namespace TH2Database
             this.rareAffixesTab.Text = "Rare Affixes";
             this.rareAffixesTab.UseVisualStyleBackColor = true;
             // 
+            // label106
+            // 
+            this.label106.Font = new System.Drawing.Font("Courier New", 12F);
+            this.label106.Location = new System.Drawing.Point(1249, 177);
+            this.label106.Name = "label106";
+            this.label106.Size = new System.Drawing.Size(159, 18);
+            this.label106.TabIndex = 242;
+            this.label106.Text = "Drop odds for:";
+            this.label106.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // uniqueBossesClassBox
+            // 
+            this.uniqueBossesClassBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.uniqueBossesClassBox.FormattingEnabled = true;
+            this.uniqueBossesClassBox.Location = new System.Drawing.Point(1411, 173);
+            this.uniqueBossesClassBox.Name = "uniqueBossesClassBox";
+            this.uniqueBossesClassBox.Size = new System.Drawing.Size(157, 24);
+            this.uniqueBossesClassBox.TabIndex = 282;
+            this.uniqueBossesClassBox.SelectedIndexChanged += new System.EventHandler(this.uniqueBossesClassBox_SelectedIndexChanged);
+            // 
+            // columnHeader16
+            // 
+            this.columnHeader16.Text = "Drop Odds";
+            this.columnHeader16.Width = 87;
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -3987,7 +4018,7 @@ namespace TH2Database
             this.MaximumSize = new System.Drawing.Size(1600, 900);
             this.MinimumSize = new System.Drawing.Size(1600, 900);
             this.Name = "MainForm";
-            this.Text = "TH2 Database for The Hell 2 version 1.1030 - by itsmedoggo, DB version 0.1.0";
+            this.Text = "TH2 Database for The Hell 2 version 1.1030 - by itsmedoggo, DB version 0.2.0";
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.tabs.ResumeLayout(false);
             this.monstersTab.ResumeLayout(false);
@@ -4328,6 +4359,9 @@ namespace TH2Database
         private System.Windows.Forms.ColumnHeader columnHeader19;
         private System.Windows.Forms.Label uniqueSet;
         private System.Windows.Forms.Label label102;
+        private System.Windows.Forms.ComboBox uniqueBossesClassBox;
+        private System.Windows.Forms.Label label106;
+        private System.Windows.Forms.ColumnHeader columnHeader16;
     }
 }
 

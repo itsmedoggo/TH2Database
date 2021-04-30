@@ -74,11 +74,19 @@ namespace TH2Database
 
         private void MainForm_Shown(object sender, EventArgs e)
         {
+            uniqueBossesClassBox.Items.Add("None");
+            for (int i = 0; i < 29; i++)
+            {
+                uniqueBossesClassBox.Items.Add(getClassString(i));
+            }
+            uniqueBossesClassBox.SelectedIndex = 0;
+
             updateSelectionList(monsterList, data.monsters);
             updateSelectionList(bossList, data.bosses);
             updateSelectionList(itemList, data.items);
             updateSelectionList(uniqueList, data.uniques);
             updateSelectionList(setList, data.sets);
+
         }
 
         private void updateSelectionList(ListView list, JArray d)
@@ -291,11 +299,19 @@ namespace TH2Database
             if (uniqueList.SelectedIndices.Count == 0) return;
             dynamic unique = data.uniques[Int32.Parse(uniqueList.SelectedItems[0].SubItems[1].Text)];
             uniqueName.Text = unique.name;
-            uniqueBaseItem.Text = "No valid base item (not droppable)";
+            uniqueBaseItem.Text = "";
+            int count = 0;
             foreach (dynamic item in data.items)
             {
-                if (item.uID == unique.uID) uniqueBaseItem.Text = item.name;
+                if (item.uID == unique.uID)
+                {
+                    if (count > 0 && count % 8 == 0) uniqueBaseItem.Text += "\n";
+                    uniqueBaseItem.Text += item.name + ", ";
+                    count++;
+                }
             }
+            if (uniqueBaseItem.Text == "") uniqueBaseItem.Text = "No valid base item (not droppable)";
+            else uniqueBaseItem.Text = uniqueBaseItem.Text.Substring(0, uniqueBaseItem.Text.Length - 2);
             uniqueLevel.Text = unique.level;
             uniquePrice.Text = unique.price;
             populateUniqueBosses(unique);
@@ -557,104 +573,79 @@ namespace TH2Database
                 {
                     label.Text += "\n";
                 }
-                switch (req)
-                {
-                    case 0:
-                        label.Text += "Warrior";
-                        break;
-                    case 1:
-                        label.Text += "Inquisitor";
-                        break;
-                    case 2:
-                        label.Text += "Guardian";
-                        break;
-                    case 3:
-                        label.Text += "Templar";
-                        break;
-                    case 4:
-                        label.Text += "Archer";
-                        break;
-                    case 5:
-                        label.Text += "Scout";
-                        break;
-                    case 6:
-                        label.Text += "Sharpshooter";
-                        break;
-                    case 7:
-                        label.Text += "Trapper";
-                        break;
-                    case 8:
-                        label.Text += "Mage";
-                        break;
-                    case 9:
-                        label.Text += "Elementalist";
-                        break;
-                    case 10:
-                        label.Text += "Demonologist";
-                        break;
-                    case 11:
-                        label.Text += "Necromancer";
-                        break;
-                    case 12:
-                        label.Text += "Beastmaster";
-                        break;
-                    case 13:
-                        label.Text += "Warlock";
-                        break;
-                    case 14:
-                        label.Text += "Monk";
-                        break;
-                    case 15:
-                        label.Text += "Kensei";
-                        break;
-                    case 16:
-                        label.Text += "Shugoki";
-                        break;
-                    case 17:
-                        label.Text += "Shinobi";
-                        break;
-                    case 18:
-                        label.Text += "Rogue";
-                        break;
-                    case 19:
-                        label.Text += "Assassin";
-                        break;
-                    case 20:
-                        label.Text += "Iron Maiden";
-                        break;
-                    case 21:
-                        label.Text += "Bombardier";
-                        break;
-                    case 22:
-                        label.Text += "Savage";
-                        break;
-                    case 23:
-                        label.Text += "Berserker";
-                        break;
-                    case 24:
-                        label.Text += "Executioner";
-                        break;
-                    case 25:
-                        label.Text += "Thraex";
-                        break;
-                    case 26:
-                        label.Text += "Murmillo";
-                        break;
-                    case 27:
-                        label.Text += "Dimachaerus";
-                        break;
-                    case 28:
-                        label.Text += "Secutor";
-                        break;
-                    default:
-                        label.Text += req.ToString();
-                        break;
-                }
+                label.Text += getClassString(req);
                 count++;
                 if (count < reqs.Count)
                 {
                     label.Text += ", ";
                 }
+            }
+        }
+
+        string getClassString(int i)
+        {
+            switch (i)
+            {
+                case 0:
+                    return "Warrior";
+                case 1:
+                    return "Inquisitor";
+                case 2:
+                    return "Guardian";
+                case 3:
+                    return "Templar";
+                case 4:
+                    return "Archer";
+                case 5:
+                    return "Scout";
+                case 6:
+                    return "Sharpshooter";
+                case 7:
+                    return "Trapper";
+                case 8:
+                    return "Mage";
+                case 9:
+                    return "Elementalist";
+                case 10:
+                    return "Demonologist";
+                case 11:
+                    return "Necromancer";
+                case 12:
+                    return "Beastmaster";
+                case 13:
+                    return "Warlock";
+                case 14:
+                    return "Monk";
+                case 15:
+                    return "Kensei";
+                case 16:
+                    return "Shugoki";
+                case 17:
+                    return "Shinobi";
+                case 18:
+                    return "Rogue";
+                case 19:
+                    return "Assassin";
+                case 20:
+                    return "Iron Maiden";
+                case 21:
+                    return "Bombardier";
+                case 22:
+                    return "Savage";
+                case 23:
+                    return "Berserker";
+                case 24:
+                    return "Executioner";
+                case 25:
+                    return "Thraex";
+                case 26:
+                    return "Murmillo";
+                case 27:
+                    return "Dimachaerus";
+                case 28:
+                    return "Secutor";
+                default:
+                    return i.ToString();
             }
         }
 
@@ -691,39 +682,95 @@ namespace TH2Database
         {
             uniqueBossesList.Items.Clear();
             dynamic item = null;
+            int selectedClass = uniqueBossesClassBox.SelectedIndex - 1;
             foreach (dynamic i in data.items)
             {
                 if (i.uID == unique.uID)
                 {
-                    item = i;
-                    break;
+                    if (i.classReq == null)
+                    {
+                        item = i;
+                        break;
+                    }
+                    foreach (dynamic c in i.classReq)
+                    {
+                        if ((int)c == selectedClass || selectedClass == -1)
+                        {
+                            item = i;
+                            break;
+                        }
+                    }
                 }
             }
             if (item == null || (int)item.droppable == 0) return;
+            Dictionary<int, string> horrorDict = new Dictionary<int, string>();
+            Dictionary<int, string> purgatoryDict = new Dictionary<int, string>();
+            Dictionary<int, string> doomDict = new Dictionary<int, string>();
             foreach (dynamic boss in data.bosses)
             {
+                int bossLevelHorror = (int)boss.level.horror;
+                int bossLevelPurgatory = (int)boss.level.purgatory;
+                int bossLevelDoom = (int)boss.level.doom;
+                if (boss.notes != null)
+                {
+                    switch ((string)boss.name)
+                    {
+                        case "Skeleton King":
+                            bossLevelHorror = 24;
+                            break;
+                        case "The Butcher":
+                            bossLevelHorror = 16;
+                            break;
+                        case "Lich King":
+                            bossLevelHorror = 60;
+                            bossLevelPurgatory = 60;
+                            bossLevelDoom = 60;
+                            break;
+                        case "Mordessa":
+                            bossLevelHorror = 59;
+                            bossLevelPurgatory = 59;
+                            bossLevelDoom = 59;
+                            break;
+                        case "Wielder of Shadowfang":
+                            bossLevelHorror = 60;
+                            bossLevelPurgatory = 60;
+                            bossLevelDoom = 60;
+                            break;
+                        case "Hephasto the Armorer":
+                            bossLevelHorror = 61;
+                            bossLevelPurgatory = 61;
+                            bossLevelDoom = 61;
+                            break;
+                    }
+                }
                 //Horror
-                if ((int)unique.level <= (int)boss.level.horror + 4 && (int)item.level <= (int)boss.level.horror && !isHigherLevelValidUnique(unique, boss, 0))
+                if ((int)unique.level <= bossLevelHorror + 4 && (int)item.level <= bossLevelHorror && !isHigherLevelValidUnique(unique, bossLevelHorror))
                 {
                     ListViewItem i = new ListViewItem((string)boss.name);
                     i.SubItems.Add("Horror");
                     i.SubItems.Add((int)boss.dungeonLevel == 0 ? "Special" : (string)boss.dungeonLevel);
+                    if (!horrorDict.ContainsKey(bossLevelHorror)) horrorDict.Add(bossLevelHorror, getDropOdds(item, bossLevelHorror, 0));
+                    i.SubItems.Add(horrorDict[bossLevelHorror]);
                     uniqueBossesList.Items.Add(i);
                 }
                 //Purgatory
-                if ((int)unique.level <= (int)boss.level.purgatory + 4 && (int)item.level <= (int)boss.level.purgatory && validItemLevelForDifficulty(item, 1) && !isHigherLevelValidUnique(unique, boss, 1))
+                if ((int)unique.level <= bossLevelPurgatory + 4 && (int)item.level <= bossLevelPurgatory && validItemLevelForDifficulty(item, 1) && !isHigherLevelValidUnique(unique, bossLevelPurgatory))
                 {
                     ListViewItem i = new ListViewItem((string)boss.name);
                     i.SubItems.Add("Purgatory");
                     i.SubItems.Add((int)boss.dungeonLevel == 0 ? "Special" : (string)boss.dungeonLevel);
+                    if (!purgatoryDict.ContainsKey(bossLevelPurgatory)) purgatoryDict.Add(bossLevelPurgatory, getDropOdds(item, bossLevelPurgatory, 1));
+                    i.SubItems.Add(purgatoryDict[bossLevelPurgatory]);
                     uniqueBossesList.Items.Add(i);
                 }
                 //Doom
-                if ((int)unique.level <= (int)boss.level.doom + 4 && (int)item.level <= (int)boss.level.doom && validItemLevelForDifficulty(item, 2) && !isHigherLevelValidUnique(unique, boss, 2))
+                if ((int)unique.level <= bossLevelDoom + 4 && (int)item.level <= bossLevelDoom && validItemLevelForDifficulty(item, 2) && !isHigherLevelValidUnique(unique, bossLevelDoom))
                 {
                     ListViewItem i = new ListViewItem((string)boss.name);
                     i.SubItems.Add("Doom");
                     i.SubItems.Add((int)boss.dungeonLevel == 0 ? "Special" : (string)boss.dungeonLevel);
+                    if (!doomDict.ContainsKey(bossLevelDoom)) doomDict.Add(bossLevelDoom, getDropOdds(item, bossLevelDoom, 2));
+                    i.SubItems.Add(doomDict[bossLevelDoom]);
                     uniqueBossesList.Items.Add(i);
                 }
             }
@@ -741,90 +788,133 @@ namespace TH2Database
             }
         }
 
-        bool isHigherLevelValidUnique(dynamic unique, dynamic boss, int difficulty)
+        string getDropOdds(dynamic baseItem, int bossLevel, int difficulty)
         {
-            int level = 0;
-            if (difficulty == 0) level = (int)boss.level.horror;
-            else if (difficulty == 1) level = (int)boss.level.purgatory;
-            else level = (int)boss.level.doom;
+            if (uniqueBossesClassBox.SelectedIndex == 0) return " ";
+            int validDrops = 0;
+            int selectedClass = uniqueBossesClassBox.SelectedIndex - 1;
+            bool correctBaseItemClass = false;
+            bool correctItemClass = false;
+            if (baseItem.classReq == null) correctBaseItemClass = true;
+            else
+            {
+                foreach (dynamic c in baseItem.classReq)
+                {
+                    if ((int)c == selectedClass) correctBaseItemClass = true;
+                }
+            }
+            if (!correctBaseItemClass) return " ";
             foreach (dynamic u in data.uniques)
             {
-                if (u.uID == unique.uID && (int)u.level > (int)unique.level && (int)u.level <= level + 4) return true;
+                dynamic item = null;
+                correctItemClass = false;
+                foreach (dynamic i in data.items)
+                {
+                    if (i.uID == u.uID)
+                    {
+                        if (i.classReq == null)
+                        {
+                            correctItemClass = true;
+                            item = i;
+                            break;
+                        }
+                        foreach (dynamic c in i.classReq)
+                        {
+                            if ((int)c == selectedClass)
+                            {
+                                correctItemClass = true;
+                                item = i;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (correctItemClass && (int)item.droppable != 0 && (int)u.level <= bossLevel + 4 && (int)item.level <= bossLevel && validItemLevelForDifficulty(item, difficulty) && !isHigherLevelValidUnique(u, bossLevel)) validDrops++;
+            }
+            return (100d / validDrops).ToString("0.00") + "%";
+        }
+
+        bool isHigherLevelValidUnique(dynamic unique, int bossLevel)
+        {
+            foreach (dynamic u in data.uniques)
+            {
+                if (u.uID == unique.uID && (int)u.level > (int)unique.level && (int)u.level <= bossLevel + 4) return true;
             }
             return false;
         }
 
         bool validItemLevelForDifficulty(dynamic item, int difficulty)
         {
+            if (difficulty == 0) return true;
             int t = (int)item.itemType;
             if (difficulty == 1)
             {
-                switch ((int)item.level)
+                switch (t)
                 {
                     case 1: //Sword
-                        return t >= 7;
+                        return item.level >= 7;
                     case 2: //Axe
-                        return t >= 7;
+                        return item.level >= 7;
                     case 3: //Bow
-                        return t >= 11;
+                        return item.level >= 11;
                     case 4: //Mace
-                        return t >= 12;
+                        return item.level >= 12;
                     case 5: //Shield
-                        return t >= 6;
+                        return item.level >= 6;
                     case 6: //Light armor
-                        return t >= 8;
+                        return item.level >= 8;
                     case 7: //Helm
-                        return t >= 8;
+                        return item.level >= 8;
                     case 10: //Staff
-                        return t >= 7;
+                        return item.level >= 7;
                     case 15: //Glove
-                        return t >= 9;
+                        return item.level >= 9;
                     case 16: //Boots
-                        return t >= 9;
+                        return item.level >= 9;
                     case 17: //Belt
-                        return t >= 7;
+                        return item.level >= 7;
                     case 18: //Flask
-                        return t >= 12;
+                        return item.level >= 12;
                     case 19: //Trap
-                        return t >= 12;
+                        return item.level >= 12;
                     case 20: //Claw
-                        return t >= 11;
+                        return item.level >= 11;
                     default:
                         return true;
                 }
             }
             else
             {
-                switch ((int)item.level)
+                switch (t)
                 {
                     case 1: //Sword
-                        return t >= 30;
+                        return item.level >= 30;
                     case 2: //Axe
-                        return t >= 25;
+                        return item.level >= 25;
                     case 3: //Bow
-                        return t >= 20;
+                        return item.level >= 20;
                     case 4: //Mace
-                        return t >= 30;
+                        return item.level >= 30;
                     case 5: //Shield
-                        return t >= 12;
+                        return item.level >= 12;
                     case 6: //Light armor
                         return false;
                     case 7: //Helm
-                        return t >= 12;
+                        return item.level >= 12;
                     case 10: //Staff
-                        return t >= 19;
+                        return item.level >= 19;
                     case 15: //Glove
-                        return t >= 28;
+                        return item.level >= 28;
                     case 16: //Boots
-                        return t >= 23;
+                        return item.level >= 23;
                     case 17: //Belt
-                        return t >= 26;
+                        return item.level >= 26;
                     case 18: //Flask
-                        return t >= 24;
+                        return item.level >= 24;
                     case 19: //Trap
-                        return t >= 24;
+                        return item.level >= 24;
                     case 20: //Claw
-                        return t >= 25;
+                        return item.level >= 25;
                     default:
                         return true;
                 }
@@ -1442,5 +1532,10 @@ namespace TH2Database
             sortColumn(setUniquesList, setUniquesListSorter, e);
         }
 
+        private void uniqueBossesClassBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (uniqueList.SelectedIndices.Count == 0) return;
+            populateUniqueBosses(data.uniques[Int32.Parse(uniqueList.SelectedItems[0].SubItems[1].Text)]);
+        }
     }
 }
