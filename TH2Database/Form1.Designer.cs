@@ -317,16 +317,19 @@ namespace TH2Database
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.uniquesTab = new System.Windows.Forms.TabPage();
+            this.uniqueBossesClassBox = new System.Windows.Forms.ComboBox();
             this.uniqueBossesList = new System.Windows.Forms.ListView();
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.uniquePrice = new System.Windows.Forms.Label();
             this.uniqueAdditionalEffects = new System.Windows.Forms.Label();
             this.uniqueBaseItem = new System.Windows.Forms.Label();
             this.uniqueSet = new System.Windows.Forms.Label();
             this.uniqueLevel = new System.Windows.Forms.Label();
             this.label169 = new System.Windows.Forms.Label();
+            this.label106 = new System.Windows.Forms.Label();
             this.label178 = new System.Windows.Forms.Label();
             this.label182 = new System.Windows.Forms.Label();
             this.label189 = new System.Windows.Forms.Label();
@@ -351,15 +354,58 @@ namespace TH2Database
             this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.affixesTab = new System.Windows.Forms.TabPage();
             this.rareAffixesTab = new System.Windows.Forms.TabPage();
-            this.label106 = new System.Windows.Forms.Label();
-            this.uniqueBossesClassBox = new System.Windows.Forms.ComboBox();
-            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.affixPrice = new System.Windows.Forms.Label();
+            this.affixEffects = new System.Windows.Forms.Label();
+            this.affixSide = new System.Windows.Forms.Label();
+            this.affixRequiredLevel = new System.Windows.Forms.Label();
+            this.affixLevel = new System.Windows.Forms.Label();
+            this.label116 = new System.Windows.Forms.Label();
+            this.label125 = new System.Windows.Forms.Label();
+            this.label128 = new System.Windows.Forms.Label();
+            this.label138 = new System.Windows.Forms.Label();
+            this.affixName = new System.Windows.Forms.Label();
+            this.label140 = new System.Windows.Forms.Label();
+            this.affixList = new System.Windows.Forms.ListView();
+            this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label139 = new System.Windows.Forms.Label();
+            this.affixItemTypes = new System.Windows.Forms.Label();
+            this.affixMultiplier = new System.Windows.Forms.Label();
+            this.label113 = new System.Windows.Forms.Label();
+            this.affixSpecializations = new System.Windows.Forms.Label();
+            this.label112 = new System.Windows.Forms.Label();
+            this.label114 = new System.Windows.Forms.Label();
+            this.affixCursed = new System.Windows.Forms.Label();
+            this.rareAffixSpecializations = new System.Windows.Forms.Label();
+            this.label115 = new System.Windows.Forms.Label();
+            this.rareAffixMultiplier = new System.Windows.Forms.Label();
+            this.rareAffixPrice = new System.Windows.Forms.Label();
+            this.rareAffixEffects = new System.Windows.Forms.Label();
+            this.rareAffixSide = new System.Windows.Forms.Label();
+            this.rareAffixCursed = new System.Windows.Forms.Label();
+            this.rareAffixRequiredLevel = new System.Windows.Forms.Label();
+            this.rareAffixItemTypes = new System.Windows.Forms.Label();
+            this.rareAffixLevel = new System.Windows.Forms.Label();
+            this.label163 = new System.Windows.Forms.Label();
+            this.label164 = new System.Windows.Forms.Label();
+            this.label170 = new System.Windows.Forms.Label();
+            this.label172 = new System.Windows.Forms.Label();
+            this.label175 = new System.Windows.Forms.Label();
+            this.label176 = new System.Windows.Forms.Label();
+            this.label177 = new System.Windows.Forms.Label();
+            this.rareAffixName = new System.Windows.Forms.Label();
+            this.label184 = new System.Windows.Forms.Label();
+            this.rareAffixList = new System.Windows.Forms.ListView();
+            this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabs.SuspendLayout();
             this.monstersTab.SuspendLayout();
             this.bossesTab.SuspendLayout();
             this.itemsTab.SuspendLayout();
             this.uniquesTab.SuspendLayout();
             this.setsTab.SuspendLayout();
+            this.affixesTab.SuspendLayout();
+            this.rareAffixesTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabs
@@ -1887,10 +1933,10 @@ namespace TH2Database
             this.bossesTab.Controls.Add(this.label180);
             this.bossesTab.Controls.Add(this.label181);
             this.bossesTab.Controls.Add(this.bossList);
-            this.bossesTab.Location = new System.Drawing.Point(4, 22);
+            this.bossesTab.Location = new System.Drawing.Point(4, 25);
             this.bossesTab.Name = "bossesTab";
             this.bossesTab.Padding = new System.Windows.Forms.Padding(3);
-            this.bossesTab.Size = new System.Drawing.Size(1577, 835);
+            this.bossesTab.Size = new System.Drawing.Size(1577, 832);
             this.bossesTab.TabIndex = 1;
             this.bossesTab.Text = "Bosses";
             this.bossesTab.UseVisualStyleBackColor = true;
@@ -3118,7 +3164,7 @@ namespace TH2Database
             // 
             this.itemDurability.AutoSize = true;
             this.itemDurability.Font = new System.Drawing.Font("Courier New", 12F);
-            this.itemDurability.Location = new System.Drawing.Point(561, 163);
+            this.itemDurability.Location = new System.Drawing.Point(561, 161);
             this.itemDurability.Name = "itemDurability";
             this.itemDurability.Size = new System.Drawing.Size(18, 18);
             this.itemDurability.TabIndex = 230;
@@ -3369,7 +3415,7 @@ namespace TH2Database
             this.label73.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label73.AutoSize = true;
             this.label73.Font = new System.Drawing.Font("Courier New", 12F);
-            this.label73.Location = new System.Drawing.Point(493, 144);
+            this.label73.Location = new System.Drawing.Point(493, 143);
             this.label73.Name = "label73";
             this.label73.Size = new System.Drawing.Size(68, 18);
             this.label73.TabIndex = 227;
@@ -3380,7 +3426,7 @@ namespace TH2Database
             // 
             this.itemDurabilityLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.itemDurabilityLabel.Font = new System.Drawing.Font("Courier New", 12F);
-            this.itemDurabilityLabel.Location = new System.Drawing.Point(433, 162);
+            this.itemDurabilityLabel.Location = new System.Drawing.Point(433, 161);
             this.itemDurabilityLabel.Name = "itemDurabilityLabel";
             this.itemDurabilityLabel.Size = new System.Drawing.Size(128, 18);
             this.itemDurabilityLabel.TabIndex = 227;
@@ -3646,6 +3692,16 @@ namespace TH2Database
             this.uniquesTab.Text = "Unique Items";
             this.uniquesTab.UseVisualStyleBackColor = true;
             // 
+            // uniqueBossesClassBox
+            // 
+            this.uniqueBossesClassBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.uniqueBossesClassBox.FormattingEnabled = true;
+            this.uniqueBossesClassBox.Location = new System.Drawing.Point(1411, 173);
+            this.uniqueBossesClassBox.Name = "uniqueBossesClassBox";
+            this.uniqueBossesClassBox.Size = new System.Drawing.Size(157, 24);
+            this.uniqueBossesClassBox.TabIndex = 282;
+            this.uniqueBossesClassBox.SelectedIndexChanged += new System.EventHandler(this.uniqueBossesClassBox_SelectedIndexChanged);
+            // 
             // uniqueBossesList
             // 
             this.uniqueBossesList.Activation = System.Windows.Forms.ItemActivation.TwoClick;
@@ -3680,11 +3736,16 @@ namespace TH2Database
             this.columnHeader8.Text = "Dungeon Level";
             this.columnHeader8.Width = 118;
             // 
+            // columnHeader16
+            // 
+            this.columnHeader16.Text = "Drop Odds";
+            this.columnHeader16.Width = 87;
+            // 
             // uniquePrice
             // 
             this.uniquePrice.AutoSize = true;
             this.uniquePrice.Font = new System.Drawing.Font("Courier New", 12F);
-            this.uniquePrice.Location = new System.Drawing.Point(561, 128);
+            this.uniquePrice.Location = new System.Drawing.Point(561, 126);
             this.uniquePrice.Name = "uniquePrice";
             this.uniquePrice.Size = new System.Drawing.Size(18, 18);
             this.uniquePrice.TabIndex = 259;
@@ -3735,12 +3796,22 @@ namespace TH2Database
             this.label169.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label169.AutoSize = true;
             this.label169.Font = new System.Drawing.Font("Courier New", 12F);
-            this.label169.Location = new System.Drawing.Point(493, 127);
+            this.label169.Location = new System.Drawing.Point(493, 126);
             this.label169.Name = "label169";
             this.label169.Size = new System.Drawing.Size(68, 18);
             this.label169.TabIndex = 236;
             this.label169.Text = "Price:";
             this.label169.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label106
+            // 
+            this.label106.Font = new System.Drawing.Font("Courier New", 12F);
+            this.label106.Location = new System.Drawing.Point(1249, 177);
+            this.label106.Name = "label106";
+            this.label106.Size = new System.Drawing.Size(159, 18);
+            this.label106.TabIndex = 242;
+            this.label106.Text = "Drop odds for:";
+            this.label106.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label178
             // 
@@ -3851,10 +3922,10 @@ namespace TH2Database
             this.setsTab.Controls.Add(this.setName);
             this.setsTab.Controls.Add(this.label107);
             this.setsTab.Controls.Add(this.setList);
-            this.setsTab.Location = new System.Drawing.Point(4, 22);
+            this.setsTab.Location = new System.Drawing.Point(4, 25);
             this.setsTab.Name = "setsTab";
             this.setsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.setsTab.Size = new System.Drawing.Size(1577, 835);
+            this.setsTab.Size = new System.Drawing.Size(1577, 832);
             this.setsTab.TabIndex = 4;
             this.setsTab.Text = "Sets";
             this.setsTab.UseVisualStyleBackColor = true;
@@ -3965,48 +4036,515 @@ namespace TH2Database
             // 
             // affixesTab
             // 
-            this.affixesTab.Location = new System.Drawing.Point(4, 22);
+            this.affixesTab.Controls.Add(this.affixSpecializations);
+            this.affixesTab.Controls.Add(this.label112);
+            this.affixesTab.Controls.Add(this.affixMultiplier);
+            this.affixesTab.Controls.Add(this.affixPrice);
+            this.affixesTab.Controls.Add(this.affixEffects);
+            this.affixesTab.Controls.Add(this.affixSide);
+            this.affixesTab.Controls.Add(this.affixCursed);
+            this.affixesTab.Controls.Add(this.affixRequiredLevel);
+            this.affixesTab.Controls.Add(this.affixItemTypes);
+            this.affixesTab.Controls.Add(this.affixLevel);
+            this.affixesTab.Controls.Add(this.label113);
+            this.affixesTab.Controls.Add(this.label116);
+            this.affixesTab.Controls.Add(this.label125);
+            this.affixesTab.Controls.Add(this.label114);
+            this.affixesTab.Controls.Add(this.label128);
+            this.affixesTab.Controls.Add(this.label139);
+            this.affixesTab.Controls.Add(this.label138);
+            this.affixesTab.Controls.Add(this.affixName);
+            this.affixesTab.Controls.Add(this.label140);
+            this.affixesTab.Controls.Add(this.affixList);
+            this.affixesTab.Location = new System.Drawing.Point(4, 25);
             this.affixesTab.Name = "affixesTab";
             this.affixesTab.Padding = new System.Windows.Forms.Padding(3);
-            this.affixesTab.Size = new System.Drawing.Size(1577, 835);
+            this.affixesTab.Size = new System.Drawing.Size(1577, 832);
             this.affixesTab.TabIndex = 5;
-            this.affixesTab.Text = "Affixes";
+            this.affixesTab.Text = "Magic Affixes";
             this.affixesTab.UseVisualStyleBackColor = true;
             // 
             // rareAffixesTab
             // 
-            this.rareAffixesTab.Location = new System.Drawing.Point(4, 22);
+            this.rareAffixesTab.Controls.Add(this.rareAffixSpecializations);
+            this.rareAffixesTab.Controls.Add(this.label115);
+            this.rareAffixesTab.Controls.Add(this.rareAffixMultiplier);
+            this.rareAffixesTab.Controls.Add(this.rareAffixPrice);
+            this.rareAffixesTab.Controls.Add(this.rareAffixEffects);
+            this.rareAffixesTab.Controls.Add(this.rareAffixSide);
+            this.rareAffixesTab.Controls.Add(this.rareAffixCursed);
+            this.rareAffixesTab.Controls.Add(this.rareAffixRequiredLevel);
+            this.rareAffixesTab.Controls.Add(this.rareAffixItemTypes);
+            this.rareAffixesTab.Controls.Add(this.rareAffixLevel);
+            this.rareAffixesTab.Controls.Add(this.label163);
+            this.rareAffixesTab.Controls.Add(this.label164);
+            this.rareAffixesTab.Controls.Add(this.label170);
+            this.rareAffixesTab.Controls.Add(this.label172);
+            this.rareAffixesTab.Controls.Add(this.label175);
+            this.rareAffixesTab.Controls.Add(this.label176);
+            this.rareAffixesTab.Controls.Add(this.label177);
+            this.rareAffixesTab.Controls.Add(this.rareAffixName);
+            this.rareAffixesTab.Controls.Add(this.label184);
+            this.rareAffixesTab.Controls.Add(this.rareAffixList);
+            this.rareAffixesTab.Location = new System.Drawing.Point(4, 25);
             this.rareAffixesTab.Name = "rareAffixesTab";
             this.rareAffixesTab.Padding = new System.Windows.Forms.Padding(3);
-            this.rareAffixesTab.Size = new System.Drawing.Size(1577, 835);
+            this.rareAffixesTab.Size = new System.Drawing.Size(1577, 832);
             this.rareAffixesTab.TabIndex = 6;
             this.rareAffixesTab.Text = "Rare Affixes";
             this.rareAffixesTab.UseVisualStyleBackColor = true;
             // 
-            // label106
+            // affixPrice
             // 
-            this.label106.Font = new System.Drawing.Font("Courier New", 12F);
-            this.label106.Location = new System.Drawing.Point(1249, 177);
-            this.label106.Name = "label106";
-            this.label106.Size = new System.Drawing.Size(159, 18);
-            this.label106.TabIndex = 242;
-            this.label106.Text = "Drop odds for:";
-            this.label106.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.affixPrice.AutoSize = true;
+            this.affixPrice.Font = new System.Drawing.Font("Courier New", 12F);
+            this.affixPrice.Location = new System.Drawing.Point(634, 126);
+            this.affixPrice.Name = "affixPrice";
+            this.affixPrice.Size = new System.Drawing.Size(18, 18);
+            this.affixPrice.TabIndex = 291;
+            this.affixPrice.Text = "?";
             // 
-            // uniqueBossesClassBox
+            // affixEffects
             // 
-            this.uniqueBossesClassBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.uniqueBossesClassBox.FormattingEnabled = true;
-            this.uniqueBossesClassBox.Location = new System.Drawing.Point(1411, 173);
-            this.uniqueBossesClassBox.Name = "uniqueBossesClassBox";
-            this.uniqueBossesClassBox.Size = new System.Drawing.Size(157, 24);
-            this.uniqueBossesClassBox.TabIndex = 282;
-            this.uniqueBossesClassBox.SelectedIndexChanged += new System.EventHandler(this.uniqueBossesClassBox_SelectedIndexChanged);
+            this.affixEffects.AutoSize = true;
+            this.affixEffects.Font = new System.Drawing.Font("Courier New", 12F);
+            this.affixEffects.Location = new System.Drawing.Point(546, 459);
+            this.affixEffects.Name = "affixEffects";
+            this.affixEffects.Size = new System.Drawing.Size(18, 18);
+            this.affixEffects.TabIndex = 292;
+            this.affixEffects.Text = "?";
             // 
-            // columnHeader16
+            // affixSide
             // 
-            this.columnHeader16.Text = "Drop Odds";
-            this.columnHeader16.Width = 87;
+            this.affixSide.AutoSize = true;
+            this.affixSide.Font = new System.Drawing.Font("Courier New", 12F);
+            this.affixSide.Location = new System.Drawing.Point(883, 50);
+            this.affixSide.Name = "affixSide";
+            this.affixSide.Size = new System.Drawing.Size(18, 18);
+            this.affixSide.TabIndex = 293;
+            this.affixSide.Text = "?";
+            // 
+            // affixRequiredLevel
+            // 
+            this.affixRequiredLevel.AutoSize = true;
+            this.affixRequiredLevel.Font = new System.Drawing.Font("Courier New", 12F);
+            this.affixRequiredLevel.Location = new System.Drawing.Point(1333, 109);
+            this.affixRequiredLevel.Name = "affixRequiredLevel";
+            this.affixRequiredLevel.Size = new System.Drawing.Size(18, 18);
+            this.affixRequiredLevel.TabIndex = 289;
+            this.affixRequiredLevel.Text = "?";
+            // 
+            // affixLevel
+            // 
+            this.affixLevel.AutoSize = true;
+            this.affixLevel.Font = new System.Drawing.Font("Courier New", 12F);
+            this.affixLevel.Location = new System.Drawing.Point(634, 109);
+            this.affixLevel.Name = "affixLevel";
+            this.affixLevel.Size = new System.Drawing.Size(18, 18);
+            this.affixLevel.TabIndex = 290;
+            this.affixLevel.Text = "?";
+            // 
+            // label116
+            // 
+            this.label116.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label116.AutoSize = true;
+            this.label116.Font = new System.Drawing.Font("Courier New", 12F);
+            this.label116.Location = new System.Drawing.Point(565, 126);
+            this.label116.Name = "label116";
+            this.label116.Size = new System.Drawing.Size(68, 18);
+            this.label116.TabIndex = 286;
+            this.label116.Text = "Price:";
+            this.label116.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label125
+            // 
+            this.label125.Font = new System.Drawing.Font("Courier New", 12F);
+            this.label125.Location = new System.Drawing.Point(512, 435);
+            this.label125.Name = "label125";
+            this.label125.Size = new System.Drawing.Size(102, 18);
+            this.label125.TabIndex = 287;
+            this.label125.Text = "Effects:";
+            this.label125.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label128
+            // 
+            this.label128.AutoSize = true;
+            this.label128.Font = new System.Drawing.Font("Courier New", 12F);
+            this.label128.Location = new System.Drawing.Point(1175, 109);
+            this.label128.Name = "label128";
+            this.label128.Size = new System.Drawing.Size(158, 18);
+            this.label128.TabIndex = 284;
+            this.label128.Text = "Required Level:";
+            this.label128.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label138
+            // 
+            this.label138.AutoSize = true;
+            this.label138.Font = new System.Drawing.Font("Courier New", 12F);
+            this.label138.Location = new System.Drawing.Point(566, 109);
+            this.label138.Name = "label138";
+            this.label138.Size = new System.Drawing.Size(68, 18);
+            this.label138.TabIndex = 285;
+            this.label138.Text = "Level:";
+            this.label138.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // affixName
+            // 
+            this.affixName.AutoSize = true;
+            this.affixName.Font = new System.Drawing.Font("Courier New", 16F);
+            this.affixName.Location = new System.Drawing.Point(914, 19);
+            this.affixName.Name = "affixName";
+            this.affixName.Size = new System.Drawing.Size(23, 24);
+            this.affixName.TabIndex = 283;
+            this.affixName.Text = "?";
+            // 
+            // label140
+            // 
+            this.label140.AutoSize = true;
+            this.label140.Font = new System.Drawing.Font("Courier New", 16F);
+            this.label140.Location = new System.Drawing.Point(798, 19);
+            this.label140.Name = "label140";
+            this.label140.Size = new System.Drawing.Size(114, 24);
+            this.label140.TabIndex = 282;
+            this.label140.Text = "Info for";
+            // 
+            // affixList
+            // 
+            this.affixList.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.affixList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader20,
+            this.columnHeader21});
+            this.affixList.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.affixList.HideSelection = false;
+            this.affixList.Location = new System.Drawing.Point(6, 6);
+            this.affixList.MultiSelect = false;
+            this.affixList.Name = "affixList";
+            this.affixList.Size = new System.Drawing.Size(400, 821);
+            this.affixList.TabIndex = 281;
+            this.affixList.UseCompatibleStateImageBehavior = false;
+            this.affixList.View = System.Windows.Forms.View.Details;
+            this.affixList.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.affixList_ColumnClick);
+            this.affixList.SelectedIndexChanged += new System.EventHandler(this.affixList_SelectedIndexChanged);
+            // 
+            // columnHeader20
+            // 
+            this.columnHeader20.Text = "Name";
+            this.columnHeader20.Width = 291;
+            // 
+            // columnHeader21
+            // 
+            this.columnHeader21.Text = "ID";
+            // 
+            // label139
+            // 
+            this.label139.AutoSize = true;
+            this.label139.Font = new System.Drawing.Font("Courier New", 12F);
+            this.label139.Location = new System.Drawing.Point(437, 210);
+            this.label139.Name = "label139";
+            this.label139.Size = new System.Drawing.Size(138, 18);
+            this.label139.TabIndex = 285;
+            this.label139.Text = "Available on:";
+            this.label139.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // affixItemTypes
+            // 
+            this.affixItemTypes.AutoSize = true;
+            this.affixItemTypes.Font = new System.Drawing.Font("Courier New", 12F);
+            this.affixItemTypes.Location = new System.Drawing.Point(571, 210);
+            this.affixItemTypes.Name = "affixItemTypes";
+            this.affixItemTypes.Size = new System.Drawing.Size(18, 18);
+            this.affixItemTypes.TabIndex = 290;
+            this.affixItemTypes.Text = "?";
+            // 
+            // affixMultiplier
+            // 
+            this.affixMultiplier.AutoSize = true;
+            this.affixMultiplier.Font = new System.Drawing.Font("Courier New", 12F);
+            this.affixMultiplier.Location = new System.Drawing.Point(634, 144);
+            this.affixMultiplier.Name = "affixMultiplier";
+            this.affixMultiplier.Size = new System.Drawing.Size(18, 18);
+            this.affixMultiplier.TabIndex = 291;
+            this.affixMultiplier.Text = "?";
+            // 
+            // label113
+            // 
+            this.label113.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label113.AutoSize = true;
+            this.label113.Font = new System.Drawing.Font("Courier New", 12F);
+            this.label113.Location = new System.Drawing.Point(515, 144);
+            this.label113.Name = "label113";
+            this.label113.Size = new System.Drawing.Size(118, 18);
+            this.label113.TabIndex = 286;
+            this.label113.Text = "Multiplier:";
+            this.label113.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // affixSpecializations
+            // 
+            this.affixSpecializations.AutoSize = true;
+            this.affixSpecializations.Font = new System.Drawing.Font("Courier New", 12F);
+            this.affixSpecializations.Location = new System.Drawing.Point(964, 109);
+            this.affixSpecializations.Name = "affixSpecializations";
+            this.affixSpecializations.Size = new System.Drawing.Size(18, 18);
+            this.affixSpecializations.TabIndex = 295;
+            this.affixSpecializations.Text = "?";
+            // 
+            // label112
+            // 
+            this.label112.AutoSize = true;
+            this.label112.Font = new System.Drawing.Font("Courier New", 12F);
+            this.label112.Location = new System.Drawing.Point(797, 109);
+            this.label112.Name = "label112";
+            this.label112.Size = new System.Drawing.Size(168, 18);
+            this.label112.TabIndex = 294;
+            this.label112.Text = "Specializations:";
+            this.label112.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label114
+            // 
+            this.label114.AutoSize = true;
+            this.label114.Font = new System.Drawing.Font("Courier New", 12F);
+            this.label114.Location = new System.Drawing.Point(1255, 126);
+            this.label114.Name = "label114";
+            this.label114.Size = new System.Drawing.Size(78, 18);
+            this.label114.TabIndex = 284;
+            this.label114.Text = "Cursed:";
+            this.label114.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // affixCursed
+            // 
+            this.affixCursed.AutoSize = true;
+            this.affixCursed.Font = new System.Drawing.Font("Courier New", 12F);
+            this.affixCursed.Location = new System.Drawing.Point(1333, 126);
+            this.affixCursed.Name = "affixCursed";
+            this.affixCursed.Size = new System.Drawing.Size(18, 18);
+            this.affixCursed.TabIndex = 289;
+            this.affixCursed.Text = "?";
+            // 
+            // rareAffixSpecializations
+            // 
+            this.rareAffixSpecializations.AutoSize = true;
+            this.rareAffixSpecializations.Font = new System.Drawing.Font("Courier New", 12F);
+            this.rareAffixSpecializations.Location = new System.Drawing.Point(964, 109);
+            this.rareAffixSpecializations.Name = "rareAffixSpecializations";
+            this.rareAffixSpecializations.Size = new System.Drawing.Size(18, 18);
+            this.rareAffixSpecializations.TabIndex = 315;
+            this.rareAffixSpecializations.Text = "?";
+            // 
+            // label115
+            // 
+            this.label115.AutoSize = true;
+            this.label115.Font = new System.Drawing.Font("Courier New", 12F);
+            this.label115.Location = new System.Drawing.Point(797, 109);
+            this.label115.Name = "label115";
+            this.label115.Size = new System.Drawing.Size(168, 18);
+            this.label115.TabIndex = 314;
+            this.label115.Text = "Specializations:";
+            this.label115.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // rareAffixMultiplier
+            // 
+            this.rareAffixMultiplier.AutoSize = true;
+            this.rareAffixMultiplier.Font = new System.Drawing.Font("Courier New", 12F);
+            this.rareAffixMultiplier.Location = new System.Drawing.Point(634, 144);
+            this.rareAffixMultiplier.Name = "rareAffixMultiplier";
+            this.rareAffixMultiplier.Size = new System.Drawing.Size(18, 18);
+            this.rareAffixMultiplier.TabIndex = 311;
+            this.rareAffixMultiplier.Text = "?";
+            // 
+            // rareAffixPrice
+            // 
+            this.rareAffixPrice.AutoSize = true;
+            this.rareAffixPrice.Font = new System.Drawing.Font("Courier New", 12F);
+            this.rareAffixPrice.Location = new System.Drawing.Point(634, 126);
+            this.rareAffixPrice.Name = "rareAffixPrice";
+            this.rareAffixPrice.Size = new System.Drawing.Size(18, 18);
+            this.rareAffixPrice.TabIndex = 310;
+            this.rareAffixPrice.Text = "?";
+            // 
+            // rareAffixEffects
+            // 
+            this.rareAffixEffects.AutoSize = true;
+            this.rareAffixEffects.Font = new System.Drawing.Font("Courier New", 12F);
+            this.rareAffixEffects.Location = new System.Drawing.Point(546, 459);
+            this.rareAffixEffects.Name = "rareAffixEffects";
+            this.rareAffixEffects.Size = new System.Drawing.Size(18, 18);
+            this.rareAffixEffects.TabIndex = 312;
+            this.rareAffixEffects.Text = "?";
+            // 
+            // rareAffixSide
+            // 
+            this.rareAffixSide.AutoSize = true;
+            this.rareAffixSide.Font = new System.Drawing.Font("Courier New", 12F);
+            this.rareAffixSide.Location = new System.Drawing.Point(883, 50);
+            this.rareAffixSide.Name = "rareAffixSide";
+            this.rareAffixSide.Size = new System.Drawing.Size(18, 18);
+            this.rareAffixSide.TabIndex = 313;
+            this.rareAffixSide.Text = "?";
+            // 
+            // rareAffixCursed
+            // 
+            this.rareAffixCursed.AutoSize = true;
+            this.rareAffixCursed.Font = new System.Drawing.Font("Courier New", 12F);
+            this.rareAffixCursed.Location = new System.Drawing.Point(1333, 126);
+            this.rareAffixCursed.Name = "rareAffixCursed";
+            this.rareAffixCursed.Size = new System.Drawing.Size(18, 18);
+            this.rareAffixCursed.TabIndex = 306;
+            this.rareAffixCursed.Text = "?";
+            // 
+            // rareAffixRequiredLevel
+            // 
+            this.rareAffixRequiredLevel.AutoSize = true;
+            this.rareAffixRequiredLevel.Font = new System.Drawing.Font("Courier New", 12F);
+            this.rareAffixRequiredLevel.Location = new System.Drawing.Point(1333, 109);
+            this.rareAffixRequiredLevel.Name = "rareAffixRequiredLevel";
+            this.rareAffixRequiredLevel.Size = new System.Drawing.Size(18, 18);
+            this.rareAffixRequiredLevel.TabIndex = 307;
+            this.rareAffixRequiredLevel.Text = "?";
+            // 
+            // rareAffixItemTypes
+            // 
+            this.rareAffixItemTypes.AutoSize = true;
+            this.rareAffixItemTypes.Font = new System.Drawing.Font("Courier New", 12F);
+            this.rareAffixItemTypes.Location = new System.Drawing.Point(571, 210);
+            this.rareAffixItemTypes.Name = "rareAffixItemTypes";
+            this.rareAffixItemTypes.Size = new System.Drawing.Size(18, 18);
+            this.rareAffixItemTypes.TabIndex = 309;
+            this.rareAffixItemTypes.Text = "?";
+            // 
+            // rareAffixLevel
+            // 
+            this.rareAffixLevel.AutoSize = true;
+            this.rareAffixLevel.Font = new System.Drawing.Font("Courier New", 12F);
+            this.rareAffixLevel.Location = new System.Drawing.Point(634, 109);
+            this.rareAffixLevel.Name = "rareAffixLevel";
+            this.rareAffixLevel.Size = new System.Drawing.Size(18, 18);
+            this.rareAffixLevel.TabIndex = 308;
+            this.rareAffixLevel.Text = "?";
+            // 
+            // label163
+            // 
+            this.label163.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label163.AutoSize = true;
+            this.label163.Font = new System.Drawing.Font("Courier New", 12F);
+            this.label163.Location = new System.Drawing.Point(515, 144);
+            this.label163.Name = "label163";
+            this.label163.Size = new System.Drawing.Size(118, 18);
+            this.label163.TabIndex = 303;
+            this.label163.Text = "Multiplier:";
+            this.label163.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label164
+            // 
+            this.label164.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label164.AutoSize = true;
+            this.label164.Font = new System.Drawing.Font("Courier New", 12F);
+            this.label164.Location = new System.Drawing.Point(565, 126);
+            this.label164.Name = "label164";
+            this.label164.Size = new System.Drawing.Size(68, 18);
+            this.label164.TabIndex = 304;
+            this.label164.Text = "Price:";
+            this.label164.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label170
+            // 
+            this.label170.Font = new System.Drawing.Font("Courier New", 12F);
+            this.label170.Location = new System.Drawing.Point(512, 435);
+            this.label170.Name = "label170";
+            this.label170.Size = new System.Drawing.Size(102, 18);
+            this.label170.TabIndex = 305;
+            this.label170.Text = "Effects:";
+            this.label170.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label172
+            // 
+            this.label172.AutoSize = true;
+            this.label172.Font = new System.Drawing.Font("Courier New", 12F);
+            this.label172.Location = new System.Drawing.Point(1255, 126);
+            this.label172.Name = "label172";
+            this.label172.Size = new System.Drawing.Size(78, 18);
+            this.label172.TabIndex = 300;
+            this.label172.Text = "Cursed:";
+            this.label172.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label175
+            // 
+            this.label175.AutoSize = true;
+            this.label175.Font = new System.Drawing.Font("Courier New", 12F);
+            this.label175.Location = new System.Drawing.Point(1175, 109);
+            this.label175.Name = "label175";
+            this.label175.Size = new System.Drawing.Size(158, 18);
+            this.label175.TabIndex = 299;
+            this.label175.Text = "Required Level:";
+            this.label175.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label176
+            // 
+            this.label176.AutoSize = true;
+            this.label176.Font = new System.Drawing.Font("Courier New", 12F);
+            this.label176.Location = new System.Drawing.Point(437, 210);
+            this.label176.Name = "label176";
+            this.label176.Size = new System.Drawing.Size(138, 18);
+            this.label176.TabIndex = 302;
+            this.label176.Text = "Available on:";
+            this.label176.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label177
+            // 
+            this.label177.AutoSize = true;
+            this.label177.Font = new System.Drawing.Font("Courier New", 12F);
+            this.label177.Location = new System.Drawing.Point(566, 109);
+            this.label177.Name = "label177";
+            this.label177.Size = new System.Drawing.Size(68, 18);
+            this.label177.TabIndex = 301;
+            this.label177.Text = "Level:";
+            this.label177.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // rareAffixName
+            // 
+            this.rareAffixName.AutoSize = true;
+            this.rareAffixName.Font = new System.Drawing.Font("Courier New", 16F);
+            this.rareAffixName.Location = new System.Drawing.Point(914, 19);
+            this.rareAffixName.Name = "rareAffixName";
+            this.rareAffixName.Size = new System.Drawing.Size(23, 24);
+            this.rareAffixName.TabIndex = 298;
+            this.rareAffixName.Text = "?";
+            // 
+            // label184
+            // 
+            this.label184.AutoSize = true;
+            this.label184.Font = new System.Drawing.Font("Courier New", 16F);
+            this.label184.Location = new System.Drawing.Point(798, 19);
+            this.label184.Name = "label184";
+            this.label184.Size = new System.Drawing.Size(114, 24);
+            this.label184.TabIndex = 297;
+            this.label184.Text = "Info for";
+            // 
+            // rareAffixList
+            // 
+            this.rareAffixList.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.rareAffixList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader22,
+            this.columnHeader23});
+            this.rareAffixList.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rareAffixList.HideSelection = false;
+            this.rareAffixList.Location = new System.Drawing.Point(6, 6);
+            this.rareAffixList.MultiSelect = false;
+            this.rareAffixList.Name = "rareAffixList";
+            this.rareAffixList.Size = new System.Drawing.Size(400, 821);
+            this.rareAffixList.TabIndex = 296;
+            this.rareAffixList.UseCompatibleStateImageBehavior = false;
+            this.rareAffixList.View = System.Windows.Forms.View.Details;
+            this.rareAffixList.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.rareAffixList_ColumnClick);
+            this.rareAffixList.SelectedIndexChanged += new System.EventHandler(this.rareAffixList_SelectedIndexChanged);
+            // 
+            // columnHeader22
+            // 
+            this.columnHeader22.Text = "Name";
+            this.columnHeader22.Width = 291;
+            // 
+            // columnHeader23
+            // 
+            this.columnHeader23.Text = "ID";
             // 
             // MainForm
             // 
@@ -4018,7 +4556,7 @@ namespace TH2Database
             this.MaximumSize = new System.Drawing.Size(1600, 900);
             this.MinimumSize = new System.Drawing.Size(1600, 900);
             this.Name = "MainForm";
-            this.Text = "TH2 Database for The Hell 2 version 1.1030 - by itsmedoggo, DB version 0.2.0";
+            this.Text = "TH2 Database for The Hell 2 version 1.1030 - by itsmedoggo, DB version 0.3.0";
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.tabs.ResumeLayout(false);
             this.monstersTab.ResumeLayout(false);
@@ -4031,6 +4569,10 @@ namespace TH2Database
             this.uniquesTab.PerformLayout();
             this.setsTab.ResumeLayout(false);
             this.setsTab.PerformLayout();
+            this.affixesTab.ResumeLayout(false);
+            this.affixesTab.PerformLayout();
+            this.rareAffixesTab.ResumeLayout(false);
+            this.rareAffixesTab.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -4362,6 +4904,50 @@ namespace TH2Database
         private System.Windows.Forms.ComboBox uniqueBossesClassBox;
         private System.Windows.Forms.Label label106;
         private System.Windows.Forms.ColumnHeader columnHeader16;
+        private System.Windows.Forms.Label affixSpecializations;
+        private System.Windows.Forms.Label label112;
+        private System.Windows.Forms.Label affixMultiplier;
+        private System.Windows.Forms.Label affixPrice;
+        private System.Windows.Forms.Label affixEffects;
+        private System.Windows.Forms.Label affixSide;
+        private System.Windows.Forms.Label affixCursed;
+        private System.Windows.Forms.Label affixRequiredLevel;
+        private System.Windows.Forms.Label affixItemTypes;
+        private System.Windows.Forms.Label affixLevel;
+        private System.Windows.Forms.Label label113;
+        private System.Windows.Forms.Label label116;
+        private System.Windows.Forms.Label label125;
+        private System.Windows.Forms.Label label114;
+        private System.Windows.Forms.Label label128;
+        private System.Windows.Forms.Label label139;
+        private System.Windows.Forms.Label label138;
+        private System.Windows.Forms.Label affixName;
+        private System.Windows.Forms.Label label140;
+        private System.Windows.Forms.ListView affixList;
+        private System.Windows.Forms.ColumnHeader columnHeader20;
+        private System.Windows.Forms.ColumnHeader columnHeader21;
+        private System.Windows.Forms.Label rareAffixSpecializations;
+        private System.Windows.Forms.Label label115;
+        private System.Windows.Forms.Label rareAffixMultiplier;
+        private System.Windows.Forms.Label rareAffixPrice;
+        private System.Windows.Forms.Label rareAffixEffects;
+        private System.Windows.Forms.Label rareAffixSide;
+        private System.Windows.Forms.Label rareAffixCursed;
+        private System.Windows.Forms.Label rareAffixRequiredLevel;
+        private System.Windows.Forms.Label rareAffixItemTypes;
+        private System.Windows.Forms.Label rareAffixLevel;
+        private System.Windows.Forms.Label label163;
+        private System.Windows.Forms.Label label164;
+        private System.Windows.Forms.Label label170;
+        private System.Windows.Forms.Label label172;
+        private System.Windows.Forms.Label label175;
+        private System.Windows.Forms.Label label176;
+        private System.Windows.Forms.Label label177;
+        private System.Windows.Forms.Label rareAffixName;
+        private System.Windows.Forms.Label label184;
+        private System.Windows.Forms.ListView rareAffixList;
+        private System.Windows.Forms.ColumnHeader columnHeader22;
+        private System.Windows.Forms.ColumnHeader columnHeader23;
     }
 }
 

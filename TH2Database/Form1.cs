@@ -24,6 +24,8 @@ namespace TH2Database
         private ListViewColumnSorter uniqueBossesListSorter;
         private ListViewColumnSorter setListSorter;
         private ListViewColumnSorter setUniquesListSorter;
+        private ListViewColumnSorter affixListSorter;
+        private ListViewColumnSorter rareAffixListSorter;
         public dynamic data;
         public string[] monsterTypes = { "Undead", "Demon", "Beast" };
         public Font plainFont = new Font("Courier New", 10f, FontStyle.Regular);
@@ -56,6 +58,8 @@ namespace TH2Database
             uniqueBossesListSorter = new ListViewColumnSorter();
             setListSorter = new ListViewColumnSorter();
             setUniquesListSorter = new ListViewColumnSorter();
+            affixListSorter = new ListViewColumnSorter();
+            rareAffixListSorter = new ListViewColumnSorter();
             monsterList.ListViewItemSorter = monsterListSorter;
             bossList.ListViewItemSorter = bossListSorter;
             itemList.ListViewItemSorter = itemListSorter;
@@ -65,6 +69,8 @@ namespace TH2Database
             uniqueBossesList.ListViewItemSorter = uniqueBossesListSorter;
             setList.ListViewItemSorter = setListSorter;
             setUniquesList.ListViewItemSorter = setUniquesListSorter;
+            affixList.ListViewItemSorter = affixListSorter;
+            rareAffixList.ListViewItemSorter = rareAffixListSorter;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -86,7 +92,8 @@ namespace TH2Database
             updateSelectionList(itemList, data.items);
             updateSelectionList(uniqueList, data.uniques);
             updateSelectionList(setList, data.sets);
-
+            updateSelectionList(affixList, data.affixes);
+            updateSelectionList(rareAffixList, data.rareAffixes);
         }
 
         private void updateSelectionList(ListView list, JArray d)
@@ -215,7 +222,7 @@ namespace TH2Database
             if (bossList.SelectedIndices.Count == 0) return;
             dynamic boss = data.bosses[Int32.Parse(bossList.SelectedItems[0].SubItems[1].Text)];
             bossName.Text = boss.name;
-            bossBaseMonster.Text = data.monsters[(int)boss.baseMonster].name;
+            bossBaseMonster.Text = (int)boss.packValue == 0 ? data.monsters[(int)boss.baseMonster].name : data.monsters[(int)boss.packValue].name;
             bossLevelHorror.Text = boss.level.horror;
             bossLevelPurgatory.Text = boss.level.purgatory;
             bossLevelDoom.Text = boss.level.doom;
@@ -333,6 +340,54 @@ namespace TH2Database
                 setBonuses.Text += "\n";
             }
             populateSetUniques(set);
+        }
+
+        private void affixList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (affixList.SelectedIndices.Count == 0) return;
+            dynamic affix = data.affixes[Int32.Parse(affixList.SelectedItems[0].SubItems[1].Text)];
+            affixName.Text = affix.name;
+            affixSide.Text = (string)affix.prefix == "true" ? "Prefix" : "Suffix";
+            affixLevel.Text = affix.level;
+            affixPrice.Text = getValueRangeString(affix.priceMin, affix.priceMax);
+            affixMultiplier.Text = affix.multiplier;
+            affixRequiredLevel.Text = affix.requiredCharLevel;
+            affixCursed.Text = affix.cursed;
+            setSpecializationsString(affix.specializations, affixSpecializations);
+            int count = 0;
+            affixItemTypes.Text = "";
+            foreach (int type in affix.itemTypes)
+            {
+                if (count > 0 && count % 8 == 0) affixItemTypes.Text += "\n";
+                affixItemTypes.Text += getAffixItemTypeString(type);
+                if (count < affix.itemTypes.Count) affixItemTypes.Text += ", ";
+                count++;
+            }
+            setAffixesString(new JArray(affix.effects), affixEffects);
+        }
+
+        private void rareAffixList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (rareAffixList.SelectedIndices.Count == 0) return;
+            dynamic rareAffix = data.rareAffixes[Int32.Parse(rareAffixList.SelectedItems[0].SubItems[1].Text)];
+            rareAffixName.Text = rareAffix.name;
+            rareAffixSide.Text = (string)rareAffix.prefix == "true" ? "Prefix" : "Suffix";
+            rareAffixLevel.Text = rareAffix.level;
+            rareAffixPrice.Text = getValueRangeString(rareAffix.priceMin, rareAffix.priceMax);
+            rareAffixMultiplier.Text = rareAffix.multiplier;
+            rareAffixRequiredLevel.Text = rareAffix.requiredCharLevel;
+            rareAffixCursed.Text = rareAffix.cursed;
+            setSpecializationsString(rareAffix.specializations, rareAffixSpecializations);
+            int count = 0;
+            rareAffixItemTypes.Text = "";
+            foreach (int type in rareAffix.itemTypes)
+            {
+                if (count > 0 && count % 8 == 0) rareAffixItemTypes.Text += "\n";
+                rareAffixItemTypes.Text += getAffixItemTypeString(type);
+                if (count < rareAffix.itemTypes.Count) rareAffixItemTypes.Text += ", ";
+                count++;
+            }
+            setAffixesString(new JArray(rareAffix.effects), rareAffixEffects);
         }
 
         private void itemUniqueList_ItemActivate(object sender, EventArgs e)
@@ -456,79 +511,129 @@ namespace TH2Database
             }
         }
 
-        void setItemTypeString(int type, Label label)
+        void setItemTypeString(int type, Label label, bool append = false)
+        {
+            if (!append) label.Text = "";
+            switch (type)
+            {
+                case 0:
+                    label.Text += "Misc.";
+                    break;
+                case 1:
+                    label.Text += "Sword";
+                    break;
+                case 2:
+                    label.Text += "Axe";
+                    break;
+                case 3:
+                    label.Text += "Bow";
+                    break;
+                case 4:
+                    label.Text += "Blunt";
+                    break;
+                case 5:
+                    label.Text += "Shield/Mage Offhand";
+                    break;
+                case 6:
+                    label.Text += "Light Armor";
+                    break;
+                case 7:
+                    label.Text += "Helm";
+                    break;
+                case 8:
+                    label.Text += "Medium Armor";
+                    break;
+                case 9:
+                    label.Text += "Heavy Armor";
+                    break;
+                case 10:
+                    label.Text += "Staff";
+                    break;
+                case 11:
+                    label.Text += "Gold";
+                    break;
+                case 12:
+                    label.Text += "Ring";
+                    break;
+                case 13:
+                    label.Text += "Amulet";
+                    break;
+                case 15:
+                    label.Text += "Gloves";
+                    break;
+                case 16:
+                    label.Text += "Boots";
+                    break;
+                case 17:
+                    label.Text += "Belt";
+                    break;
+                case 18:
+                    label.Text += "Flask";
+                    break;
+                case 19:
+                    label.Text += "Trap";
+                    break;
+                case 20:
+                    label.Text += "Claw";
+                    break;
+                case 21:
+                    label.Text += "Knife";
+                    break;
+                case 22:
+                    label.Text += "Throwing Mallet";
+                    break;
+                default:
+                    label.Text += type.ToString();
+                    break;
+            }
+        }
+
+        string getAffixItemTypeString(int type)
         {
             switch (type)
             {
                 case 0:
-                    label.Text = "Misc.";
-                    break;
+                    return "One-Handed Sword";
                 case 1:
-                    label.Text = "Sword";
-                    break;
+                    return "Two-Handed Sword";
                 case 2:
-                    label.Text = "Axe";
-                    break;
+                    return "Axe";
                 case 3:
-                    label.Text = "Bow";
-                    break;
+                    return "One-Handed Blunt";
                 case 4:
-                    label.Text = "Blunt";
-                    break;
+                    return "Two-Handed Blunt";
                 case 5:
-                    label.Text = "Shield/Mage Offhand";
-                    break;
+                    return "Bow";
                 case 6:
-                    label.Text = "Light Armor";
-                    break;
+                    return "Flask";
                 case 7:
-                    label.Text = "Helm";
-                    break;
+                    return "Shield";
                 case 8:
-                    label.Text = "Medium Armor";
-                    break;
+                    return "Light Armor";
                 case 9:
-                    label.Text = "Heavy Armor";
-                    break;
+                    return "Medium Armor";
                 case 10:
-                    label.Text = "Staff";
-                    break;
+                    return "Heavy Armor";
                 case 11:
-                    label.Text = "Gold";
-                    break;
+                    return "Helm";
                 case 12:
-                    label.Text = "Ring";
-                    break;
+                    return "Belt";
                 case 13:
-                    label.Text = "Amulet";
-                    break;
+                    return "Gloves";
                 case 15:
-                    label.Text = "Gloves";
-                    break;
+                    return "Boots";
                 case 16:
-                    label.Text = "Boots";
-                    break;
+                    return "Staff";
                 case 17:
-                    label.Text = "Belt";
-                    break;
+                    return "Ring";
                 case 18:
-                    label.Text = "Flask";
-                    break;
+                    return "Amulet";
                 case 19:
-                    label.Text = "Trap";
-                    break;
+                    return "Claw";
                 case 20:
-                    label.Text = "Claw";
-                    break;
-                case 21:
-                    label.Text = "Knife";
-                    break;
-                case 22:
-                    label.Text = "Throwing Mallet";
-                    break;
+                    return "Trap";
                 default:
-                    label.Text = type.ToString();
-                    break;
+                    return type.ToString();
             }
         }
 
@@ -669,7 +774,8 @@ namespace TH2Database
             monsterBossesList.Items.Clear();
             foreach (dynamic boss in data.bosses)
             {
-                if (boss.baseMonster == index)
+                int baseMonsterID = (int)boss.packValue == 0 ? (int)boss.baseMonster : (int)boss.packValue;
+                if (baseMonsterID == index)
                 {
                     ListViewItem item = new ListViewItem((string)boss.name);
                     item.SubItems.Add((string)boss.dungeonLevel);
@@ -708,9 +814,11 @@ namespace TH2Database
             Dictionary<int, string> doomDict = new Dictionary<int, string>();
             foreach (dynamic boss in data.bosses)
             {
-                int bossLevelHorror = (int)boss.level.horror;
-                int bossLevelPurgatory = (int)boss.level.purgatory;
-                int bossLevelDoom = (int)boss.level.doom;
+                int baseMonsterID = (int)boss.packValue == 0 ? (int)boss.baseMonster : (int)boss.packValue;
+                int baseMonsterLevel = (int)data.monsters[baseMonsterID].level.horror;
+                int bossLevelHorror = baseMonsterLevel;
+                int bossLevelPurgatory = baseMonsterLevel;
+                int bossLevelDoom = baseMonsterLevel;
                 if (boss.notes != null)
                 {
                     switch ((string)boss.name)
@@ -744,32 +852,32 @@ namespace TH2Database
                     }
                 }
                 //Horror
-                if ((int)unique.level <= bossLevelHorror + 4 && (int)item.level <= bossLevelHorror && !isHigherLevelValidUnique(unique, bossLevelHorror))
+                if ((int)unique.level <= bossLevelHorror + 4 && itemWithinQLvlRange((int)item.level, bossLevelHorror, 0) && underStatReqLimit(item, (int)boss.dungeonLevel, 0) && !isHigherLevelValidUnique(unique, bossLevelHorror))
                 {
                     ListViewItem i = new ListViewItem((string)boss.name);
                     i.SubItems.Add("Horror");
                     i.SubItems.Add((int)boss.dungeonLevel == 0 ? "Special" : (string)boss.dungeonLevel);
-                    if (!horrorDict.ContainsKey(bossLevelHorror)) horrorDict.Add(bossLevelHorror, getDropOdds(item, bossLevelHorror, 0));
+                    if (!horrorDict.ContainsKey(bossLevelHorror)) horrorDict.Add(bossLevelHorror, getDropOdds(item, bossLevelHorror, 0, (int)boss.dungeonLevel));
                     i.SubItems.Add(horrorDict[bossLevelHorror]);
                     uniqueBossesList.Items.Add(i);
                 }
                 //Purgatory
-                if ((int)unique.level <= bossLevelPurgatory + 4 && (int)item.level <= bossLevelPurgatory && validItemLevelForDifficulty(item, 1) && !isHigherLevelValidUnique(unique, bossLevelPurgatory))
+                if ((int)unique.level <= bossLevelPurgatory + 4 && itemWithinQLvlRange((int)item.level, bossLevelPurgatory, 1) && underStatReqLimit(item, (int)boss.dungeonLevel, 1) && validItemLevelForDifficulty(item, 1) && !isHigherLevelValidUnique(unique, bossLevelPurgatory))
                 {
                     ListViewItem i = new ListViewItem((string)boss.name);
                     i.SubItems.Add("Purgatory");
                     i.SubItems.Add((int)boss.dungeonLevel == 0 ? "Special" : (string)boss.dungeonLevel);
-                    if (!purgatoryDict.ContainsKey(bossLevelPurgatory)) purgatoryDict.Add(bossLevelPurgatory, getDropOdds(item, bossLevelPurgatory, 1));
+                    if (!purgatoryDict.ContainsKey(bossLevelPurgatory)) purgatoryDict.Add(bossLevelPurgatory, getDropOdds(item, bossLevelPurgatory, 1, (int)boss.dungeonLevel));
                     i.SubItems.Add(purgatoryDict[bossLevelPurgatory]);
                     uniqueBossesList.Items.Add(i);
                 }
                 //Doom
-                if ((int)unique.level <= bossLevelDoom + 4 && (int)item.level <= bossLevelDoom && validItemLevelForDifficulty(item, 2) && !isHigherLevelValidUnique(unique, bossLevelDoom))
+                if ((int)unique.level <= bossLevelDoom + 4 && itemWithinQLvlRange((int)item.level, bossLevelDoom, 2) && validItemLevelForDifficulty(item, 2) && !isHigherLevelValidUnique(unique, bossLevelDoom))
                 {
                     ListViewItem i = new ListViewItem((string)boss.name);
                     i.SubItems.Add("Doom");
                     i.SubItems.Add((int)boss.dungeonLevel == 0 ? "Special" : (string)boss.dungeonLevel);
-                    if (!doomDict.ContainsKey(bossLevelDoom)) doomDict.Add(bossLevelDoom, getDropOdds(item, bossLevelDoom, 2));
+                    if (!doomDict.ContainsKey(bossLevelDoom)) doomDict.Add(bossLevelDoom, getDropOdds(item, bossLevelDoom, 2, (int)boss.dungeonLevel));
                     i.SubItems.Add(doomDict[bossLevelDoom]);
                     uniqueBossesList.Items.Add(i);
                 }
@@ -788,7 +896,28 @@ namespace TH2Database
             }
         }
 
-        string getDropOdds(dynamic baseItem, int bossLevel, int difficulty)
+        bool itemWithinQLvlRange(int level, int monsterLevel, int difficulty)
+        {
+            /*int minLvl = 3 + (int)((monsterLevel + 3) / 6) + 10 * difficulty;
+            int maxLvl = 6 + (int)((monsterLevel + 3) / 3) + 20 * difficulty;
+            return level <= maxLvl && level >= minLvl;*/
+            return true;
+        }
+
+        bool underStatReqLimit(dynamic baseItem, int dungeonLevel, int difficulty)
+        {
+            int limit;
+            if (difficulty == 0) limit = dungeonLevel * 5 + 20;
+            else if (difficulty == 1) limit = dungeonLevel * 5 + 135;
+            else return true;
+            if (baseItem.strReqMax != null && (int)baseItem.strReqMax > limit) return false;
+            if (baseItem.dexReqMax != null && (int)baseItem.dexReqMax > limit) return false;
+            if (baseItem.magReqMax != null && (int)baseItem.magReqMax > limit) return false;
+            if (baseItem.vitReqMax != null && (int)baseItem.vitReqMax > limit) return false;
+            return true;
+        }
+
+        string getDropOdds(dynamic baseItem, int bossLevel, int difficulty, int dlvl)
         {
             if (uniqueBossesClassBox.SelectedIndex == 0) return " ";
             int validDrops = 0;
@@ -829,7 +958,7 @@ namespace TH2Database
                         }
                     }
                 }
-                if (correctItemClass && (int)item.droppable != 0 && (int)u.level <= bossLevel + 4 && (int)item.level <= bossLevel && validItemLevelForDifficulty(item, difficulty) && !isHigherLevelValidUnique(u, bossLevel)) validDrops++;
+                if (correctItemClass && (int)item.droppable != 0 && (int)u.level <= bossLevel + 4 && (int)item.level <= bossLevel && validItemLevelForDifficulty(item, difficulty) && underStatReqLimit(item, dlvl, difficulty) && !isHigherLevelValidUnique(u, bossLevel)) validDrops++;
             }
             return (100d / validDrops).ToString("0.00") + "%";
         }
@@ -1532,10 +1661,21 @@ namespace TH2Database
             sortColumn(setUniquesList, setUniquesListSorter, e);
         }
 
+        private void affixList_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            sortColumn(affixList, affixListSorter, e);
+        }
+
+        private void rareAffixList_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            sortColumn(rareAffixList, rareAffixListSorter, e);
+        }
+
         private void uniqueBossesClassBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (uniqueList.SelectedIndices.Count == 0) return;
             populateUniqueBosses(data.uniques[Int32.Parse(uniqueList.SelectedItems[0].SubItems[1].Text)]);
         }
+
     }
 }
