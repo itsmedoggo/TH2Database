@@ -859,6 +859,7 @@ namespace TH2Database
                     i.SubItems.Add((int)boss.dungeonLevel == 0 ? "Special" : (string)boss.dungeonLevel);
                     if (!horrorDict.ContainsKey(bossLevelHorror)) horrorDict.Add(bossLevelHorror, getDropOdds(item, bossLevelHorror, 0, (int)boss.dungeonLevel));
                     i.SubItems.Add(horrorDict[bossLevelHorror]);
+                    i.SubItems.Add((string)data.monsters[baseMonsterID].name);
                     uniqueBossesList.Items.Add(i);
                 }
                 //Purgatory
@@ -869,6 +870,7 @@ namespace TH2Database
                     i.SubItems.Add((int)boss.dungeonLevel == 0 ? "Special" : (string)boss.dungeonLevel);
                     if (!purgatoryDict.ContainsKey(bossLevelPurgatory)) purgatoryDict.Add(bossLevelPurgatory, getDropOdds(item, bossLevelPurgatory, 1, (int)boss.dungeonLevel));
                     i.SubItems.Add(purgatoryDict[bossLevelPurgatory]);
+                    i.SubItems.Add((string)data.monsters[baseMonsterID].name);
                     uniqueBossesList.Items.Add(i);
                 }
                 //Doom
@@ -879,6 +881,7 @@ namespace TH2Database
                     i.SubItems.Add((int)boss.dungeonLevel == 0 ? "Special" : (string)boss.dungeonLevel);
                     if (!doomDict.ContainsKey(bossLevelDoom)) doomDict.Add(bossLevelDoom, getDropOdds(item, bossLevelDoom, 2, (int)boss.dungeonLevel));
                     i.SubItems.Add(doomDict[bossLevelDoom]);
+                    i.SubItems.Add((string)data.monsters[baseMonsterID].name);
                     uniqueBossesList.Items.Add(i);
                 }
             }
